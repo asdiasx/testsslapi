@@ -23,13 +23,15 @@ public class UserController {
 
 	@GetMapping(value = "/lotofacil/{teste}")
 	public String getLotofacilTestResult(@PathVariable int teste) {
-		//url de resultados gerais:
-		//String url = "https://servicebus2.caixa.gov.br/portaldeloterias/api/home/ultimos-resultados";
+		// url de resultados gerais:
+		// String url =
+		// "https://servicebus2.caixa.gov.br/portaldeloterias/api/home/ultimos-resultados";
 		String url = "https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/" + teste;
 		RestTemplate rest = new RestTemplate();
 		ResLotoFacil results = rest.getForObject(url, ResLotoFacil.class);
 
-		return ("<h1>Teste: " + teste + "</h1>" + "<p>Resultado: " + results.getListaDezenas().toString() + "</p>");
+		return ("<h1>Teste: " + teste + "</h1>" + "<p>Resultado: " + results.getListaDezenas().toString() + "</p>"
+				+ "<p>Data: " + results.getDataApuracao() + "</p>");
 
 	}
 
